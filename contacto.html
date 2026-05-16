@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto — Soledad Salgado C. · Arquitectura</title>
+  <meta name="description" content="Solicita una cotización o conversemos sobre un encargo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-name">Soledad Salgado C.</span>
+      <span class="logo-tag">Arquitectura</span>
+    </a>
+    <button class="nav-toggle" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="sobre.html">Estudio</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section class="page-header">
+    <div class="container">
+      <div class="mono">
+        <span>Lám. 04/04 — Contacto</span>
+        <span>Solicitud de encargo</span>
+      </div>
+      <h1>Conversemos sobre tu proyecto o encargo.</h1>
+      <p class="subtitle">
+        Escríbenos por correo, llamada o WhatsApp. Te responderemos dentro
+        de un par de días hábiles con las preguntas necesarias para
+        dimensionar el trabajo y entregar una propuesta clara.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="contact-grid">
+
+        <div class="contact-info reveal">
+          <div class="mono" style="margin-bottom: 1.5rem;">Datos directos</div>
+          <dl>
+            <div>
+              <dt>Correo</dt>
+              <dd><a href="mailto:soledad.salgado@gmail.com">soledad.salgado@gmail.com</a></dd>
+            </div>
+            <div>
+              <dt>Teléfono</dt>
+              <dd><a href="tel:+56978402742">+56 9 7840 2742</a></dd>
+            </div>
+            <div>
+              <dt>WhatsApp</dt>
+              <dd><a href="https://wa.me/56978402742" target="_blank" rel="noopener">+56 9 7840 2742</a></dd>
+            </div>
+            <div>
+              <dt>Horario</dt>
+              <dd>Lun a Vie · 09:00 — 18:00</dd>
+            </div>
+          </dl>
+
+          <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line);">
+            <p style="font-size: 0.95rem; color: var(--muted); max-width: 40ch;">
+              Si tu solicitud es una tasación, peritaje o informe técnico,
+              ayuda mucho indicar dirección o comuna del inmueble y el motivo
+              del encargo.
+            </p>
+          </div>
+        </div>
+
+        <div class="frame reveal" style="padding: 2.5rem;">
+          <div class="form-header">
+            <span class="mono">Formulario de contacto</span>
+            <span class="mono">Rev. 01</span>
+          </div>
+
+          <form class="form" action="https://formsubmit.co/soledad.salgado@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Nuevo contacto desde el sitio web">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" style="display:none">
+
+            <div class="form-field">
+              <label for="nombre">
+                <span class="field-num">01</span>
+                <span>Nombre</span>
+              </label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+            </div>
+
+            <div class="form-field">
+              <label for="email">
+                <span class="field-num">02</span>
+                <span>Correo</span>
+              </label>
+              <input type="email" id="email" name="email" placeholder="nombre@ejemplo.cl" required>
+            </div>
+
+            <div class="form-field">
+              <label for="telefono">
+                <span class="field-num">03</span>
+                <span>Teléfono</span>
+                <span class="opt">— opcional</span>
+              </label>
+              <input type="tel" id="telefono" name="telefono" placeholder="+56 9 0000 0000">
+            </div>
+
+            <div class="form-field">
+              <label for="servicio">
+                <span class="field-num">04</span>
+                <span>Servicio de interés</span>
+              </label>
+              <select id="servicio" name="servicio">
+                <option>Tasación de propiedad</option>
+                <option>Acondicionamiento energético</option>
+                <option>Remodelación</option>
+                <option>Paisajismo</option>
+                <option>Peritaje</option>
+                <option>Informe técnico</option>
+                <option>Revisión de patologías constructivas</option>
+                <option>Otro / consulta general</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="mensaje">
+                <span class="field-num">05</span>
+                <span>Mensaje</span>
+              </label>
+              <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos brevemente del encargo, dirección o comuna del inmueble si corresponde, y plazos estimados." required></textarea>
+            </div>
+
+            <div class="form-footer">
+              <span class="mono">05 campos · envío directo</span>
+              <button type="submit" class="btn btn-primary btn-arrow">Enviar mensaje</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="logo" style="margin-bottom:1rem;">
+          <span class="logo-name">Soledad Salgado C.</span>
+          <span class="logo-tag">Arquitectura</span>
+        </div>
+        <p style="font-size:0.9rem; color: var(--muted); max-width: 38ch;">
+          Estudio de arquitectura. Tasaciones, peritajes, informes técnicos,
+          remodelación, paisajismo y acondicionamiento energético.
+        </p>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="sobre.html">Estudio</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:soledad.salgado@gmail.com">soledad.salgado@gmail.com</a></li>
+          <li><a href="tel:+56978402742">+56 9 7840 2742</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> Soledad Salgado C.</span>
+      <span>Lám. 04/04</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
