@@ -29,6 +29,39 @@
   padding: 0;
 }
 
+/* ---------- Cross-page transitions (View Transitions API) ---------- */
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: vt-out 0.32s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+::view-transition-new(root) {
+  animation: vt-in 0.5s cubic-bezier(0.2, 0, 0.2, 1) forwards;
+}
+
+@keyframes vt-out {
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes vt-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+/* Keep the header stable across pages (no flicker) */
+.nav {
+  view-transition-name: site-header;
+}
+
 html {
   scroll-behavior: smooth;
   font-size: 16px;
@@ -969,17 +1002,114 @@ footer {
   .logo-tag { font-size: 0.55rem; letter-spacing: 0.3em; }
 }
 
-/* ---------- Reveal animation ---------- */
+/* ---------- Reveal animations ---------- */
 
 .reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0, 0.2, 1);
+  will-change: opacity, transform;
 }
 
 .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
+}
+
+.reveal.from-left  { transform: translateX(-32px); }
+.reveal.from-right { transform: translateX(32px); }
+.reveal.scale-in   { transform: scale(0.96); }
+
+.reveal.from-left.is-visible,
+.reveal.from-right.is-visible,
+.reveal.scale-in.is-visible { transform: none; }
+
+/* Stagger: when many siblings reveal at once they cascade in */
+.services-preview .service-row.reveal:nth-child(1) { transition-delay: 0ms; }
+.services-preview .service-row.reveal:nth-child(2) { transition-delay: 70ms; }
+.services-preview .service-row.reveal:nth-child(3) { transition-delay: 140ms; }
+.services-preview .service-row.reveal:nth-child(4) { transition-delay: 210ms; }
+.services-preview .service-row.reveal:nth-child(5) { transition-delay: 280ms; }
+.services-preview .service-row.reveal:nth-child(6) { transition-delay: 350ms; }
+.services-preview .service-row.reveal:nth-child(7) { transition-delay: 420ms; }
+
+.services-list .service-block.reveal:nth-child(1) { transition-delay: 0ms; }
+.services-list .service-block.reveal:nth-child(2) { transition-delay: 80ms; }
+.services-list .service-block.reveal:nth-child(3) { transition-delay: 160ms; }
+.services-list .service-block.reveal:nth-child(4) { transition-delay: 240ms; }
+
+/* Method cards in /sobre */
+section > .container > div > .frame.reveal:nth-child(1) { transition-delay: 0ms; }
+section > .container > div > .frame.reveal:nth-child(2) { transition-delay: 120ms; }
+section > .container > div > .frame.reveal:nth-child(3) { transition-delay: 240ms; }
+
+/* ---------- Section-header & page-header line draw ---------- */
+
+.section-header,
+.page-header {
+  position: relative;
+}
+
+.page-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: line-draw 0.9s cubic-bezier(0.7, 0, 0.3, 1) 0.25s forwards;
+}
+
+.section-header.reveal::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.9s cubic-bezier(0.7, 0, 0.3, 1) 0.15s;
+}
+
+.section-header.reveal.is-visible::after {
+  transform: scaleX(1);
+}
+
+@keyframes line-draw {
+  to { transform: scaleX(1); }
+}
+
+/* ---------- Respect reduced-motion preference ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+
+  .reveal,
+  .reveal.is-visible,
+  .reveal.from-left,
+  .reveal.from-right,
+  .reveal.scale-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .page-header::after,
+  .section-header.reveal::after {
+    transform: scaleX(1);
+    animation: none;
+    transition: none;
+  }
 }
 
 /* ---------- Print-like blueprint frame ---------- */
